@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWA Web Demo Site</title>
+    <title>Bubble Fire Web</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyDkn1uDYjzr1qISRPX0Pw2127dpjJ0RI0U",
+        authDomain: "palances.github.io",
+        databaseURL: "https://bubblefire-test.firebaseio.com",
+        projectId: "bubblefire-test",
+        storageBucket: "bubblefire-test.appspot.com",
+        messagingSenderId: "132980092377",
+        appId: "1:132980092377:web:4938ce009cfa14e7c5bdc8",
+        measurementId: "G-43ZDRVV5PZ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const analytics = firebase.analytics();
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid');
+    analytics.setUserId(uid);
+    
+
+    window.onload = (e) => {
+        analytics.logEvent("page_view");
+    }
+
+    function click_event() {
+        analytics.logEvent("select_content");
+    }
+    </script>
 </head>
 <body>
-    
+    <button onclick="click_event();"> Fire click event</button>
 </body>
 </html>
